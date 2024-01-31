@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MiniPojects</string>
+    <string name="result_output">The %1$s tile is %2$s.</string>
+
+</resources>
