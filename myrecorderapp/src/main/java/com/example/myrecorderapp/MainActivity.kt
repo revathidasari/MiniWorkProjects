@@ -25,6 +25,11 @@ import java.util.*
 class MainActivity : ComponentActivity() {
 
 
+    private var permissions: Array<String> = arrayOf(
+        android.Manifest.permission.RECORD_AUDIO,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
+
     private val recorder by lazy {
         AudioRecorder(applicationContext)
     }
@@ -39,12 +44,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        AllowRuntimePermissions(this, permissions).requestPermissions()
+        AllowRuntimePermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)).requestPermissions()
 
-        ActivityCompat.requestPermissions(
+/*        ActivityCompat.requestPermissions(
             this,
             arrayOf(android.Manifest.permission.RECORD_AUDIO),
             0
-        )
+        )*/
 
 
         setContent {
